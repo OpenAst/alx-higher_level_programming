@@ -5,7 +5,7 @@ def search_replace(my_list, search, replace):
     new_list = []
 
     # Iterate through the original list
-    for element in original_list:
+    for element in my_list:
         # If the element is the one to replace, add the replacement element to the new list
         if element == search:
             new_list.append(replace)
