@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-# 0-square by Israel
+"""defines class square """
+
 
 class Square:
-    """Does Nothing"""
+    """ empty square """
     pass
