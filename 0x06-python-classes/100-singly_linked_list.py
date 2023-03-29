@@ -54,7 +54,7 @@ class SinglyLinkedList:
     def __str__(self):
         """make list printable"""
 
-        printsll = " "
+        printsll = ""
         location = self.head
         while location:
             printsll += str(location.data) + "\n"
@@ -74,9 +74,9 @@ class SinglyLinkedList:
             new.next_node = self.head
             self.head = new
             return
-        location = self.head
+        location = self.hea
         while location.next_node and location.next_node.data < value:
             location = location.next_node
         if location.next_node:
             new.next_node = location.next_node
-        location.next_node = new
+        location.next_node = new 
