@@ -1,6 +1,8 @@
-#!/usr/bin/python3
 
-""""A module that create an empty rectangle"""
-class rectangle:
-    """empty rectangle"""
+#!/usr/bin/python3
+"""This program create an empty Rectangle Class"""
+
+
+class Rectangle():
+    """Do nothing"""
     pass
