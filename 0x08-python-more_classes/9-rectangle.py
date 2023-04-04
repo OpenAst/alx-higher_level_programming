@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Area and Perimeter
-"""
-class Rectangle:
+"""Area and Perimeter of class Rectangle"""
+
+class Rectangle():
     """Defines the implementation of a rectangle
     Attributes:
         number_of_instances (int): The number of Rectangle instances.
@@ -9,7 +9,7 @@ class Rectangle:
     """
 
     number_of_instances = 0
-    print_symbol = "#"
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         type(self).number_of_instances += 1
@@ -57,7 +57,7 @@ class Rectangle:
         rectangle perimeter
         """
         if self.__width == 0 or self.__height == 0:
-            return (0)
+            return 0
         rectangle_params = ((2 * self.__height) + (2 * self.__width))
         return rectangle_params
 
