@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Area and Perimeter
 """
-
-
 class Rectangle:
     """Defines the implementation of a rectangle
     Attributes:
@@ -112,4 +110,3 @@ class Rectangle:
             size (int): The width and height of the new Rectangle.
         """
         return (cls(size, size))
-
