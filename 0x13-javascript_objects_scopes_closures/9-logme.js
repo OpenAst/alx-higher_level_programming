@@ -1,10 +1,4 @@
 #!/usr/bin/node
+let count = 0;
+exports.logMe = function (item) { console.log(`${count++}: ${item}`); };
 
-let cuantity = 0;
-
-const logMe = (item) => {
-  console.log(`${cuantity}: ${item}`);
-  cuantity++;
-};
-
-module.exports = { logMe };

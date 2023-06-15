@@ -1,5 +1,4 @@
 #!/usr/bin/node
-
-const nbOccurences = (list, searchElement) => list.filter((element) => searchElement === element).length;
-
-module.exports = { nbOccurences };
+exports.nbOccurences = function (list, searchElement) {
+  return list.reduce((count, current) => current === searchElement ? count + 1 : count, 0);
+};
