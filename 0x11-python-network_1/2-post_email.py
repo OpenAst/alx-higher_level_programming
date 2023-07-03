@@ -1,19 +1,28 @@
 #!/usr/bin/python3
-"""
-sends a POST request to the passed URL with the email as a parameter,
-and displays the body of the response (decoded in utf-8)
-"""
+"""This script sends a POST request to the url"""
+from urllib.request import urlopen, Request
+from urllib.error import URLError
+from urllib.parse import urlencode
+from sys import argv
+
+
+def make_post_request(url_str: str, email_arg: str):
+    try:
+        data = urlencode({"email": email_arg})
+        email = data.encode("utf-8")
+        req = Request(url_str, email)
+        with urlopen(req) as response:
+            body = response.read()
+        print(body.decode("utf-8"))
+    except URLError as e:
+        if hasattr(e, "reason"):
+            print(e.reason)
+        elif hasattr(e, "code"):
+            print(e.code)
+
 
 if __name__ == "__main__":
-    import urllib.request
-    import urllib.parse
-    import sys
-
-    argv = sys.argv
-    url = argv[1]
-    email = argv[2]
-    data = urllib.parse.urlencode("email": email)
-    data = data.encode('ascii')
-
-    with urllib.request.urlopen(url, data) as response:
-        print(response.read().decode('utf-8'))
+    try:
+        make_post_request(argv[1], argv[2])
+    except IndexError:
+        raise
