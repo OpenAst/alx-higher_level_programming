@@ -1,15 +1,24 @@
 #!/usr/bin/python3
-"""
-Python script that fetches https://alx-intranet.hbtn.io/status
-"""
-import urllib.request
+"""This script makes a request to the url and gets a response"""
+from urllib.request import urlopen, Request
+from urllib.error import URLError
 
-if __name__ == "__main__":
-    r = urllib.request.Request("https://alx-intranet.hbtn.io/status")
-    with urllib.request.urlopen(r) as response:
-        body = response.read()
+
+def get_body_decode():
+    try:
+        req = Request("https://alx-intranet.hbtn.io/status")
+        with urlopen(req) as response:
+            body = response.read()
         print("Body response:")
         print("\t- type: {}".format(type(body)))
         print("\t- content: {}".format(body))
         print("\t- utf8 content: {}".format(body.decode("utf-8")))
+    except URLError as e:
+        if hasattr(e, "reason"):
+            print(e.reason)
+        elif hasattr(e, "code"):
+            print(e.code)
 
+
+if __name__ == "__main__":
+    get_body_decode()

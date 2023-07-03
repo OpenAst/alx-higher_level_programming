@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-"""Sends a request to the URL and displays the body of the response."""
+"""This script gets the status code of a request"""
+import requests
+from sys import argv
 
 
-if __name__ == '__main__':
-    from sys import argv
-    from requests import get
+def get_request_status(url: str):
+    req = requests.get(url)
+    if req.status_code >= 400:
+        print("Error code: {}".format(req.status_code))
+    else:
+        print(req.text)
 
-    url = argv[1]
 
-    response = get(url)
-    ERR_TXT = 'Error code: {}'
-    status = response.status_code
-    print(ERR_TXT.format(status) if (status >= 400) else response.text)
+if __name__ == "__main__":
+    get_request_status(argv[1])

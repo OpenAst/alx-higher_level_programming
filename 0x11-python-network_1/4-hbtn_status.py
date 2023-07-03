@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-"""
-a Python script that fetches https://alx-intranet.hbtn.io/status
-"""
+"""This script makes requests"""
+import requests
 
-import  requests
+
+def get_request():
+    req = requests.get("https://alx-intranet.hbtn.io/status")
+    print("Body response:")
+    print("\t- type: {}".format(type(req.text)))
+    print("\t- content: {}".format(req.text))
+
 
 if __name__ == "__main__":
-    request = requests.get("https://alx-intranet.hbtn.io/status")
-    t = request.text
-
-    print("Body response:\n\t- type: {}\n\t- content: {}".format(type(t), t))
+    get_request()

@@ -1,21 +1,23 @@
 #!/usr/bin/python3
-"""
-, sends a request to the URL and displays the body of the response (decoded in utf-8).
-"""
+"""This script manages HTTP errors"""
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError
+from urllib.parse import urlencode
+from sys import argv
+
+
+def manage_error(url_str: str):
+    try:
+        req = Request(url_str)
+        with urlopen(req) as response:
+            body = response.read()
+        print(body.decode("utf-8"))
+    except HTTPError as e:
+        print("Error code: {}".format(e.code))
+
 
 if __name__ == "__main__":
-    import urllib.request
-    from urllib import error
-    import sys
-
-    argv = sys.argv
-    url = argv[1]
-
     try:
-        with urllib.request.urlopen(url) as response:
-            body = response.read()
-            print(body.decode('utf-8'))
-    except error.HTTPError as er:
-        print("Error code: {}".format(err.status))
-
-
+        manage_error(argv[1])
+    except IndexError:
+        raise
